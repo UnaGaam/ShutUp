@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shut Up - Revolutionary Sound Suppression</title>
+    <title>Shut Up - Advanced Sound Suppression Technology</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -12,16 +13,17 @@
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #0f0f23 0%, #1a1a3e 100%);
-            color: #fff;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: #0a0a0a;
+            color: #e8e8e8;
             overflow-x: hidden;
+            line-height: 1.6;
         }
 
         .page {
             min-height: 100vh;
             display: none;
-            animation: fadeIn 0.6s ease-in;
+            animation: fadeIn 0.5s ease-in;
         }
 
         .page.active {
@@ -29,221 +31,281 @@
         }
 
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
+            from { opacity: 0; }
+            to { opacity: 1; }
         }
 
-        /* Hero Page */
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid #1a1a1a;
+            padding: 1.5rem 4rem;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            color: #fff;
+        }
+
+        .nav-cta {
+            background: #fff;
+            color: #0a0a0a;
+            padding: 0.75rem 1.75rem;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.95rem;
+            font-weight: 600;
+            transition: all 0.2s ease;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .nav-cta:hover {
+            background: #f0f0f0;
+            transform: translateY(-1px);
+        }
+
+        /* Hero Section */
         .hero {
             min-height: 100vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
-            align-items: center;
-            text-align: center;
-            padding: 2rem;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            width: 500px;
-            height: 500px;
-            background: radial-gradient(circle, rgba(138,43,226,0.3) 0%, transparent 70%);
-            border-radius: 50%;
-            top: -200px;
-            right: -200px;
-            animation: pulse 4s ease-in-out infinite;
-        }
-
-        .hero::after {
-            content: '';
-            position: absolute;
-            width: 400px;
-            height: 400px;
-            background: radial-gradient(circle, rgba(75,0,130,0.3) 0%, transparent 70%);
-            border-radius: 50%;
-            bottom: -150px;
-            left: -150px;
-            animation: pulse 4s ease-in-out infinite 2s;
-        }
-
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); opacity: 0.3; }
-            50% { transform: scale(1.2); opacity: 0.5; }
-        }
-
-        .hero-content {
-            position: relative;
-            z-index: 1;
-            max-width: 900px;
-        }
-
-        h1 {
-            font-size: 5rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-            background: linear-gradient(45deg, #fff, #a78bfa, #fff);
-            background-size: 200% auto;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            animation: shimmer 3s linear infinite;
-        }
-
-        @keyframes shimmer {
-            to { background-position: 200% center; }
-        }
-
-        .tagline {
-            font-size: 1.5rem;
-            margin-bottom: 2rem;
-            color: #c4b5fd;
-        }
-
-        .features {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin: 3rem 0;
-        }
-
-        .feature-card {
-            background: rgba(255,255,255,0.05);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255,255,255,0.1);
-            border-radius: 20px;
-            padding: 2rem;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .feature-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(138,43,226,0.3);
-        }
-
-        .feature-icon {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-        }
-
-        .feature-card h3 {
-            font-size: 1.3rem;
-            margin-bottom: 0.5rem;
-            color: #fff;
-        }
-
-        .feature-card p {
-            color: #c4b5fd;
-            line-height: 1.6;
-        }
-
-        .cta-button {
-            background: linear-gradient(135deg, #8b5cf6 0%, #6366f1 100%);
-            color: white;
-            padding: 1.2rem 3rem;
-            font-size: 1.3rem;
-            border: none;
-            border-radius: 50px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 10px 30px rgba(139,92,246,0.4);
-            font-weight: 600;
-            margin-top: 2rem;
-        }
-
-        .cta-button:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 40px rgba(139,92,246,0.6);
-        }
-
-        /* Product Page */
-        .product-page {
-            padding: 4rem 2rem;
+            padding: 8rem 4rem 4rem;
             max-width: 1400px;
             margin: 0 auto;
         }
 
-        .back-button {
-            background: rgba(255,255,255,0.1);
-            border: 1px solid rgba(255,255,255,0.2);
-            color: white;
-            padding: 0.8rem 1.5rem;
-            border-radius: 30px;
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 6rem;
+            align-items: center;
+        }
+
+        .hero-content h1 {
+            font-size: 4.5rem;
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            letter-spacing: -0.03em;
+            color: #fff;
+        }
+
+        .hero-content .subtitle {
+            font-size: 1.25rem;
+            color: #999;
+            margin-bottom: 3rem;
+            font-weight: 400;
+            line-height: 1.7;
+        }
+
+        .hero-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .stat {
+            border-left: 2px solid #1a1a1a;
+            padding-left: 1rem;
+        }
+
+        .stat-value {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 0.25rem;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: #666;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .hero-cta {
+            background: #fff;
+            color: #0a0a0a;
+            padding: 1.25rem 3rem;
+            font-size: 1.1rem;
+            border: none;
+            border-radius: 8px;
             cursor: pointer;
-            margin-bottom: 2rem;
-            font-size: 1rem;
+            transition: all 0.2s ease;
+            font-weight: 600;
+            display: inline-block;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .hero-cta:hover {
+            background: #f0f0f0;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 40px rgba(255, 255, 255, 0.1);
+        }
+
+        .hero-visual {
+            position: relative;
+            height: 600px;
+            background: linear-gradient(135deg, #1a1a1a 0%, #0f0f0f 100%);
+            border-radius: 20px;
+            border: 1px solid #1a1a1a;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .hero-visual::before {
+            content: '';
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(255,255,255,0.03) 0%, transparent 70%);
+            border-radius: 50%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .visual-placeholder {
+            font-size: 8rem;
+            opacity: 0.1;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Features Section */
+        .features-section {
+            padding: 8rem 4rem;
+            max-width: 1400px;
+            margin: 0 auto;
+            border-top: 1px solid #1a1a1a;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 5rem;
+        }
+
+        .section-header h2 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            letter-spacing: -0.02em;
+        }
+
+        .section-header p {
+            font-size: 1.1rem;
+            color: #666;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 3rem;
+        }
+
+        .feature-card {
+            background: #0f0f0f;
+            border: 1px solid #1a1a1a;
+            border-radius: 16px;
+            padding: 3rem;
             transition: all 0.3s ease;
         }
 
+        .feature-card:hover {
+            border-color: #2a2a2a;
+            transform: translateY(-4px);
+        }
+
+        .feature-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .feature-card p {
+            color: #999;
+            line-height: 1.8;
+            font-size: 1rem;
+        }
+
+        /* Product Page */
+        .product-page {
+            padding: 8rem 4rem 4rem;
+            max-width: 1600px;
+            margin: 0 auto;
+        }
+
+        .back-button {
+            background: transparent;
+            border: 1px solid #1a1a1a;
+            color: #e8e8e8;
+            padding: 0.75rem 1.5rem;
+            border-radius: 6px;
+            cursor: pointer;
+            margin-bottom: 3rem;
+            font-size: 0.95rem;
+            transition: all 0.2s ease;
+            font-family: 'Inter', sans-serif;
+            font-weight: 500;
+        }
+
         .back-button:hover {
-            background: rgba(255,255,255,0.2);
+            border-color: #2a2a2a;
+            background: #0f0f0f;
         }
 
         .product-container {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 6rem;
             align-items: start;
         }
 
         .product-gallery {
             position: sticky;
-            top: 2rem;
+            top: 8rem;
         }
 
         .main-image {
             width: 100%;
-            height: 500px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            border-radius: 30px;
+            height: 600px;
+            background: #0f0f0f;
+            border: 1px solid #1a1a1a;
+            border-radius: 16px;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-bottom: 1rem;
-            box-shadow: 0 20px 60px rgba(102,126,234,0.4);
-            animation: float 3s ease-in-out infinite;
-            position: relative;
+            margin-bottom: 1.5rem;
             overflow: hidden;
+            position: relative;
         }
 
         .main-image img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            border-radius: 30px;
-            position: relative;
-            z-index: 2;
-        }
-
-        .main-image::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: linear-gradient(45deg, transparent 30%, rgba(255,255,255,0.1) 50%, transparent 70%);
-            animation: shine 3s infinite;
-            pointer-events: none;
-            z-index: 3;
+            border-radius: 16px;
         }
 
         .placeholder-icon {
-            font-size: 6rem;
-            z-index: 1;
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-20px); }
-        }
-
-        @keyframes shine {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
+            font-size: 5rem;
+            opacity: 0.1;
         }
 
         .thumbnail-grid {
@@ -253,207 +315,277 @@
         }
 
         .thumbnail {
-            height: 150px;
-            background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.05) 100%);
-            border: 2px solid rgba(255,255,255,0.2);
-            border-radius: 15px;
+            height: 140px;
+            background: #0f0f0f;
+            border: 1px solid #1a1a1a;
+            border-radius: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: all 0.2s ease;
             overflow: hidden;
-            position: relative;
         }
 
         .thumbnail img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            border-radius: 13px;
-        }
-
-        .thumbnail .thumb-placeholder {
-            font-size: 1.5rem;
-            color: #c4b5fd;
+            border-radius: 12px;
         }
 
         .thumbnail:hover {
-            transform: scale(1.05);
-            border-color: #8b5cf6;
+            border-color: #2a2a2a;
         }
 
         .thumbnail.active {
-            border-color: #8b5cf6;
-            box-shadow: 0 0 20px rgba(139,92,246,0.5);
+            border-color: #fff;
         }
 
-        .product-details {
-            animation: slideInRight 0.6s ease-out;
-        }
-
-        @keyframes slideInRight {
-            from { opacity: 0; transform: translateX(50px); }
-            to { opacity: 1; transform: translateX(0); }
+        .thumb-placeholder {
+            font-size: 1rem;
+            color: #333;
+            font-weight: 500;
         }
 
         .product-details h2 {
             font-size: 3rem;
             margin-bottom: 1rem;
-            background: linear-gradient(45deg, #fff, #c4b5fd);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+        }
+
+        .product-description {
+            font-size: 1.05rem;
+            color: #999;
+            line-height: 1.8;
+            margin-bottom: 2rem;
         }
 
         .price {
             font-size: 2.5rem;
-            color: #8b5cf6;
             font-weight: 700;
-            margin: 1.5rem 0;
+            margin: 2rem 0;
         }
 
         .specs {
-            background: rgba(255,255,255,0.05);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255,255,255,0.1);
-            border-radius: 20px;
-            padding: 2rem;
+            background: #0f0f0f;
+            border: 1px solid #1a1a1a;
+            border-radius: 12px;
+            padding: 2.5rem;
             margin: 2rem 0;
         }
 
         .specs h3 {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-            color: #c4b5fd;
+            font-size: 1.25rem;
+            margin-bottom: 1.5rem;
+            font-weight: 600;
         }
 
         .specs ul {
             list-style: none;
-            line-height: 2;
+            line-height: 2.2;
+        }
+
+        .specs li {
+            color: #999;
+            padding-left: 1.5rem;
+            position: relative;
         }
 
         .specs li::before {
-            content: '✓ ';
-            color: #8b5cf6;
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: #fff;
             font-weight: bold;
-            margin-right: 0.5rem;
         }
 
         .quantity-selector {
             display: flex;
             align-items: center;
-            gap: 1rem;
-            margin: 2rem 0;
+            gap: 1.5rem;
+            margin: 2.5rem 0;
         }
 
         .quantity-selector label {
-            font-size: 1.2rem;
-            color: #c4b5fd;
+            font-size: 1rem;
+            color: #999;
+            font-weight: 500;
         }
 
         .quantity-controls {
             display: flex;
             align-items: center;
             gap: 1rem;
-            background: rgba(255,255,255,0.05);
-            border: 1px solid rgba(255,255,255,0.2);
-            border-radius: 50px;
+            background: #0f0f0f;
+            border: 1px solid #1a1a1a;
+            border-radius: 8px;
             padding: 0.5rem 1rem;
         }
 
         .qty-btn {
-            background: #8b5cf6;
+            background: transparent;
             border: none;
-            color: white;
-            width: 35px;
-            height: 35px;
-            border-radius: 50%;
+            color: #e8e8e8;
+            width: 32px;
+            height: 32px;
+            border-radius: 4px;
             cursor: pointer;
             font-size: 1.2rem;
-            transition: all 0.3s ease;
+            transition: all 0.2s ease;
+            font-weight: 500;
         }
 
         .qty-btn:hover {
-            background: #6366f1;
-            transform: scale(1.1);
+            background: #1a1a1a;
         }
 
         .qty-display {
-            font-size: 1.5rem;
-            min-width: 50px;
+            font-size: 1.1rem;
+            min-width: 40px;
             text-align: center;
             font-weight: 600;
         }
 
         .buy-now {
             width: 100%;
-            background: linear-gradient(135deg, #8b5cf6 0%, #6366f1 100%);
-            color: white;
-            padding: 1.5rem;
-            font-size: 1.5rem;
+            background: #fff;
+            color: #0a0a0a;
+            padding: 1.25rem;
+            font-size: 1.1rem;
             border: none;
-            border-radius: 50px;
+            border-radius: 8px;
             cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 10px 30px rgba(139,92,246,0.4);
-            font-weight: 700;
+            transition: all 0.2s ease;
+            font-weight: 600;
             margin-top: 1rem;
+            font-family: 'Inter', sans-serif;
         }
 
         .buy-now:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 40px rgba(139,92,246,0.6);
+            background: #f0f0f0;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 40px rgba(255, 255, 255, 0.1);
         }
 
-        @media (max-width: 768px) {
-            h1 { font-size: 3rem; }
-            .product-container {
+        @media (max-width: 1024px) {
+            nav {
+                padding: 1.5rem 2rem;
+            }
+
+            .hero {
+                padding: 6rem 2rem 2rem;
+            }
+
+            .hero-grid {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+
+            .hero-content h1 {
+                font-size: 3rem;
+            }
+
+            .hero-visual {
+                height: 400px;
+            }
+
+            .features-section {
+                padding: 4rem 2rem;
+            }
+
+            .features-grid {
                 grid-template-columns: 1fr;
                 gap: 2rem;
             }
+
+            .product-page {
+                padding: 6rem 2rem 2rem;
+            }
+
+            .product-container {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+
             .product-gallery {
                 position: relative;
                 top: 0;
+            }
+
+            .main-image {
+                height: 400px;
             }
         }
     </style>
 </head>
 <body>
+    <!-- Navigation -->
+    <nav>
+        <div class="logo">SHUT UP</div>
+        <button class="nav-cta" id="navButton">Order Now</button>
+    </nav>
+
     <!-- Hero Page -->
     <div class="page active" id="heroPage">
         <div class="hero">
-            <div class="hero-content">
-                <h1>SHUT UP</h1>
-                <p class="tagline">Revolutionary Sound Suppression Technology</p>
-                
-                <div class="features">
-                    <div class="feature-card">
-                        <div class="feature-icon">🔇</div>
-                        <h3>Mute Button</h3>
-                        <p>Instantly silence all sounds around you with one press. Perfect for absolute peace.</p>
+            <div class="hero-grid">
+                <div class="hero-content">
+                    <h1>Advanced Sound Suppression Technology</h1>
+                    <p class="subtitle">Experience unprecedented control over your acoustic environment with precision-engineered sound deflection technology.</p>
+                    
+                    <div class="hero-stats">
+                        <div class="stat">
+                            <div class="stat-value">130+</div>
+                            <div class="stat-label">Decibels</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-value">0.6g</div>
+                            <div class="stat-label">Gold Plating</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-value">24/7</div>
+                            <div class="stat-label">Protection</div>
+                        </div>
                     </div>
                     
-                    <div class="feature-card">
-                        <div class="feature-icon">🎯</div>
-                        <h3>Selective Suppression</h3>
-                        <p>Use the wireless dial pointer to choose specific sounds to eliminate - barking dogs, traffic, or noisy neighbors.</p>
-                    </div>
-                    
-                    <div class="feature-card">
-                        <div class="feature-icon">⚡</div>
-                        <h3>130+ Decibel Protection</h3>
-                        <p>High-frequency technology blocks over 130 decibels of unwanted noise with precision.</p>
-                    </div>
-                    
-                    <div class="feature-card">
-                        <div class="feature-icon">💎</div>
-                        <h3>Premium Materials</h3>
-                        <p>Smooth rubbery texture with 0.6g gold plating. Beyond 2025 technology with no competition.</p>
-                    </div>
+                    <button class="hero-cta" id="heroButton">Explore Product — $299.99</button>
                 </div>
                 
-                <button class="cta-button" id="heroButton">EXPERIENCE SILENCE - $299.99</button>
+                <div class="hero-visual">
+                    <div class="visual-placeholder">∿</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Features Section -->
+        <div class="features-section">
+            <div class="section-header">
+                <h2>Engineered for Silence</h2>
+                <p>Four key technologies working in harmony</p>
+            </div>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <h3>One-Touch Mute System</h3>
+                    <p>Instantly silence all ambient sounds with a single press. Our proprietary mute technology creates an immediate sound barrier, providing instant relief from noise pollution.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <h3>Selective Sound Targeting</h3>
+                    <p>Utilize the wireless dial pointer to precisely select and eliminate specific sound sources. Target barking dogs, traffic noise, or neighborhood disturbances with surgical precision.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <h3>High-Frequency Deflection</h3>
+                    <p>Advanced acoustic deflection technology suppresses over 130 decibels of unwanted noise. Our high-frequency system redirects sound waves before they reach your environment.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <h3>Premium Construction</h3>
+                    <p>Crafted with precision-molded materials featuring a sophisticated rubbery texture and 0.6g gold plating. Built for durability and designed for the modern professional.</p>
+                </div>
             </div>
         </div>
     </div>
@@ -461,30 +593,30 @@
     <!-- Product Page -->
     <div class="page" id="productPage">
         <div class="product-page">
-            <button class="back-button" id="backButton">← Back to Home</button>
+            <button class="back-button" id="backButton">← Back</button>
             
             <div class="product-container">
                 <div class="product-gallery">
                     <div class="main-image" id="mainImageContainer">
                         <img id="mainImage" src="" alt="Shut Up Device" style="display:none;">
-                        <div class="placeholder-icon" id="mainPlaceholder">🔇</div>
+                        <div class="placeholder-icon" id="mainPlaceholder">∿</div>
                     </div>
                     <div class="thumbnail-grid">
                         <div class="thumbnail active" id="thumb0">
                             <img class="thumb-img" src="" alt="View 1" style="display:none;">
-                            <div class="thumb-placeholder">📷 Image 1</div>
+                            <div class="thumb-placeholder">View 01</div>
                         </div>
                         <div class="thumbnail" id="thumb1">
                             <img class="thumb-img" src="" alt="View 2" style="display:none;">
-                            <div class="thumb-placeholder">📷 Image 2</div>
+                            <div class="thumb-placeholder">View 02</div>
                         </div>
                     </div>
                 </div>
                 
                 <div class="product-details">
                     <h2>Shut Up</h2>
-                    <p style="font-size: 1.2rem; color: #c4b5fd; line-height: 1.8;">
-                        Experience the future of sound control. Our revolutionary device uses advanced high-frequency technology to deflect and suppress unwanted sounds of your choosing. Simply use the wireless dial pointer to select any sound you want to eliminate - from barking dogs to traffic noise.
+                    <p class="product-description">
+                        Revolutionary sound suppression device utilizing advanced high-frequency deflection technology. Precisely control your acoustic environment with wireless sound targeting and one-touch mute functionality. Designed for professionals who demand peace.
                     </p>
                     
                     <div class="price">$299.99</div>
@@ -492,26 +624,27 @@
                     <div class="specs">
                         <h3>Technical Specifications</h3>
                         <ul>
-                            <li>Suppresses over 130 decibels of unwanted sound</li>
-                            <li>High-frequency sound deflection technology</li>
-                            <li>Wireless dial pointer for sound selection</li>
+                            <li>Suppresses 130+ decibels of ambient noise</li>
+                            <li>High-frequency acoustic deflection system</li>
+                            <li>Wireless dial pointer for targeted sound selection</li>
                             <li>One-touch mute button for instant silence</li>
-                            <li>Premium rubbery texture with 0.6g gold plating</li>
-                            <li>Improves sleep quality and reduces stress</li>
-                            <li>Blocks traffic, barking, and neighbor noise</li>
+                            <li>Premium construction with 0.6g gold plating</li>
+                            <li>Rubbery texture for optimal grip and comfort</li>
+                            <li>Reduces stress and improves sleep quality</li>
+                            <li>Effective against traffic, barking, and ambient noise</li>
                         </ul>
                     </div>
                     
                     <div class="quantity-selector">
-                        <label>Quantity:</label>
+                        <label>Quantity</label>
                         <div class="quantity-controls">
-                            <button class="qty-btn" id="decreaseBtn">-</button>
+                            <button class="qty-btn" id="decreaseBtn">−</button>
                             <span class="qty-display" id="quantity">1</span>
                             <button class="qty-btn" id="increaseBtn">+</button>
                         </div>
                     </div>
                     
-                    <button class="buy-now" id="buyButton">BUY NOW - <span id="totalPrice">$299.99</span></button>
+                    <button class="buy-now" id="buyButton">Purchase — <span id="totalPrice">$299.99</span></button>
                 </div>
             </div>
         </div>
@@ -522,18 +655,20 @@
         const basePrice = 299.99;
         let currentImageIndex = 0;
         
-        // ADD YOUR IMAGE URLS HERE - Replace the empty strings with your image URLs
         const productImages = [
-            'IMG_20251119_104649.jpg', // Replace with your first image URL
-            'IMG_20251119_104658.jpg'   // Replace with your second image URL
+            'IMG_20251119_104649.jpg',
+            'IMG_20251119_104658.jpg'
         ];
 
-        // Navigation functions
-        document.getElementById('heroButton').addEventListener('click', function() {
+        // Navigation
+        document.getElementById('heroButton').addEventListener('click', showProductPage);
+        document.getElementById('navButton').addEventListener('click', showProductPage);
+        
+        function showProductPage() {
             document.getElementById('heroPage').classList.remove('active');
             document.getElementById('productPage').classList.add('active');
             window.scrollTo(0, 0);
-        });
+        }
 
         document.getElementById('backButton').addEventListener('click', function() {
             document.getElementById('productPage').classList.remove('active');
@@ -541,20 +676,16 @@
             window.scrollTo(0, 0);
         });
 
-        // Image changing function
+        // Image gallery
         function changeImage(index) {
             currentImageIndex = index;
             const mainImg = document.getElementById('mainImage');
             const placeholder = document.getElementById('mainPlaceholder');
             const thumbnails = document.querySelectorAll('.thumbnail');
             
-            // Remove active class from all thumbnails
             thumbnails.forEach(thumb => thumb.classList.remove('active'));
-            
-            // Add active class to selected thumbnail
             document.getElementById('thumb' + index).classList.add('active');
             
-            // Change main image
             if (productImages[index] && productImages[index] !== '') {
                 mainImg.src = productImages[index];
                 mainImg.style.display = 'block';
@@ -565,16 +696,10 @@
             }
         }
 
-        // Thumbnail click events
-        document.getElementById('thumb0').addEventListener('click', function() {
-            changeImage(0);
-        });
+        document.getElementById('thumb0').addEventListener('click', () => changeImage(0));
+        document.getElementById('thumb1').addEventListener('click', () => changeImage(1));
 
-        document.getElementById('thumb1').addEventListener('click', function() {
-            changeImage(1);
-        });
-
-        // Quantity functions
+        // Quantity controls
         document.getElementById('increaseBtn').addEventListener('click', function() {
             quantity++;
             updateQuantity();
@@ -593,15 +718,13 @@
             document.getElementById('totalPrice').textContent = '$' + total;
         }
 
-        // Buy button
         document.getElementById('buyButton').addEventListener('click', function() {
             const total = (basePrice * quantity).toFixed(2);
-            alert('Thank you for your order!\n\nProduct: Shut Up Sound Suppression Device\nQuantity: ' + quantity + '\nTotal: $' + total + '\n\nYour order will bring you peace and quiet!');
+            alert('Order Confirmed\n\nProduct: Shut Up Sound Suppression Device\nQuantity: ' + quantity + '\nTotal: $' + total + '\n\nThank you for your purchase.');
         });
         
-        // Load images on page load
+        // Load images
         window.addEventListener('load', function() {
-            // Load thumbnail images
             const thumbImgs = document.querySelectorAll('.thumb-img');
             thumbImgs.forEach((img, index) => {
                 if (productImages[index] && productImages[index] !== '') {
@@ -611,7 +734,6 @@
                 }
             });
             
-            // Load first image in main display
             if (productImages[0] && productImages[0] !== '') {
                 changeImage(0);
             }

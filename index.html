@@ -12,58 +12,57 @@
         background: #0f0f0f;
         color: white;
         overflow-x: hidden;
+        scroll-behavior: smooth;
     }
 
-    /* HERO SECTION */
+    /* HERO */
     .hero {
         height: 90vh;
-        background: linear-gradient(to bottom right, #1b1b1b, #000);
+        background: linear-gradient(to bottom right, #181818, #000);
+        text-align: center;
         display: flex;
         flex-direction: column;
         justify-content: center;
-        align-items: center;
-        text-align: center;
-        padding: 20px;
-        animation: fadeIn 1s ease forwards;
+        animation: fadeIn 1s ease;
     }
 
     .hero h1 {
         font-size: 3.5rem;
-        letter-spacing: 2px;
-        margin-bottom: 10px;
-        animation: slideDown 1.3s ease;
+        margin: 0;
+        animation: slideDown 1s ease;
     }
 
     .tagline {
         font-size: 1.2rem;
         opacity: 0.8;
-        margin-bottom: 30px;
+        margin-top: 10px;
     }
 
     /* BUTTON */
     .buy-btn {
         background: #00a2ff;
-        padding: 15px 35px;
+        padding: 15px 40px;
         border-radius: 50px;
+        margin-top: 35px;
         font-size: 1.3rem;
         color: white;
         text-decoration: none;
+        display: inline-block;
         transition: 0.3s;
-        box-shadow: 0 0 20px #00a2ffaa;
-        animation: popIn 1.5s ease;
+        box-shadow: 0 0 20px #00a2ff80;
     }
 
     .buy-btn:hover {
-        background: #0085d6;
-        box-shadow: 0 0 30px #009dff;
+        background: #0088d6;
+        box-shadow: 0 0 30px #00a2ff;
         transform: scale(1.05);
     }
 
     /* SLIDER */
     .slider {
-        width: 80%;
-        max-width: 700px;
-        height: 350px;
+        width: 85%;
+        max-width: 750px;
+        height: 360px;
         margin: 40px auto;
         border-radius: 15px;
         overflow: hidden;
@@ -72,10 +71,10 @@
     }
 
     .slider img {
+        position: absolute;
         width: 100%;
         height: 100%;
         object-fit: cover;
-        position: absolute;
         opacity: 0;
         transition: opacity 1s ease;
     }
@@ -84,36 +83,111 @@
         opacity: 1;
     }
 
-    /* DESCRIPTION SECTION */
+    /* DESCRIPTION */
     .description {
-        max-width: 850px;
-        margin: 60px auto;
-        background: #1a1a1a;
+        max-width: 900px;
+        margin: 50px auto;
         padding: 30px;
-        border-radius: 15px;
+        border-radius: 12px;
+        background: #1a1a1a;
         box-shadow: 0 0 20px #000;
-        animation: fadeIn 2s ease;
     }
 
     h2 {
         color: #00a2ff;
-        margin-bottom: 10px;
     }
 
-    @keyframes fadeIn {
-        from {opacity: 0;}
-        to {opacity: 1;}
-    }
-    @keyframes slideDown {
-        from {transform: translateY(-20px); opacity: 0;}
-        to {transform: translateY(0); opacity: 1;}
-    }
-    @keyframes popIn {
-        from {transform: scale(0.7); opacity: 0;}
-        to {transform: scale(1); opacity: 1;}
+    /* ORDER SECTION */
+    #order-section {
+        display: none;
+        background: #151515;
+        padding: 40px;
+        margin-top: 60px;
+        border-radius: 15px;
+        width: 80%;
+        max-width: 800px;
+        margin-left: auto;
+        margin-right: auto;
+        box-shadow: 0 0 25px #000;
+        animation: fadeIn 1s ease;
     }
 
+    #order-section.show {
+        display: block;
+        animation: fadeUp 0.8s ease;
+    }
+
+    .order-title {
+        font-size: 2.5rem;
+        color: #00ccff;
+        margin-bottom: 20px;
+    }
+
+    label {
+        font-size: 1.2rem;
+    }
+
+    select {
+        padding: 10px;
+        font-size: 1rem;
+        border-radius: 10px;
+        border: none;
+        outline: none;
+        margin-top: 10px;
+    }
+
+    .price {
+        font-size: 2rem;
+        margin: 20px 0;
+        color: #00ccff;
+    }
+
+    .confirm-btn {
+        display: inline-block;
+        background: #00a2ff;
+        padding: 12px 30px;
+        border-radius: 40px;
+        text-decoration: none;
+        color: white;
+        font-size: 1.3rem;
+        transition: 0.3s;
+        box-shadow: 0 0 15px #009dff;
+    }
+
+    .confirm-btn:hover {
+        background: #008ed6;
+        transform: scale(1.05);
+    }
+
+    /* ORDER PAGE SLIDER */
+    .mini-slider {
+        width: 100%;
+        height: 300px;
+        border-radius: 12px;
+        overflow: hidden;
+        margin-bottom: 25px;
+        position: relative;
+    }
+
+    .mini-slider img {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        opacity: 0;
+        transition: opacity 1s ease;
+    }
+
+    .mini-slider img.active {
+        opacity: 1;
+    }
+
+    /* ANIMATIONS */
+    @keyframes fadeIn {from {opacity: 0;} to {opacity: 1;}}
+    @keyframes slideDown {from {transform: translateY(-20px); opacity: 0;} to {transform: translateY(0); opacity: 1;}}
+    @keyframes fadeUp {from {transform: translateY(20px); opacity: 0;} to {transform: translateY(0); opacity: 1;}}
 </style>
+
 </head>
 <body>
 
@@ -122,51 +196,83 @@
     <h1>S.H.U.T U.P Device</h1>
     <div class="tagline">Sound Harboring Ultimate Tech Under Person</div>
 
-    <a href="order.html" class="buy-btn">Buy Now</a>
+    <a class="buy-btn" onclick="openOrder()">Buy Now</a>
 </div>
 
-<!-- SLIDER -->
+<!-- MAIN SLIDER -->
 <div class="slider">
     <img src="image1.jpg" class="active">
     <img src="image2.jpg">
 </div>
 
 <script>
-    const imgs = document.querySelectorAll('.slider img');
-    let idx = 0;
-
+    let s = document.querySelectorAll('.slider img');
+    let si = 0;
     setInterval(() => {
-        imgs[idx].classList.remove('active');
-        idx = (idx + 1) % imgs.length;
-        imgs[idx].classList.add('active');
+        s[si].classList.remove('active');
+        si = (si + 1) % s.length;
+        s[si].classList.add('active');
     }, 3000);
 </script>
 
-<!-- DESCRIPTION SECTION -->
+<!-- DESCRIPTION -->
 <div class="description">
     <h2>What is our Product?</h2>
-    <p>
-        The S.H.U.T U.P Device uses high-frequency technology to deflect sounds of your choosing.
-        Controlled by a dial and wireless pointer, you can instantly eliminate unwanted noise.
-    </p>
+    <p>The S.H.U.T U.P Device uses high-frequency technology to deflect sounds of your choosing…</p>
 
-    <h2>Use / Benefits</h2>
-    <p>
-        Includes a universal <strong>Mute</strong> button that silences all sound.
-        Helps with sleep, reduces stress, and removes distractions like traffic or loud people.
-    </p>
+    <h2>Benefits</h2>
+    <p>Mute button. Sleep improvement. Silence people, traffic, and more.</p>
 
     <h2>Tech Specs</h2>
-    <p>
-        Suppresses over <strong>130 decibels</strong> of noise using futuristic sound-harboring tech.
-    </p>
+    <p>Suppresses over 130 decibels of noise with futuristic high-frequency tech.</p>
 
     <h2>Pricing</h2>
-    <p>
-        Built with rare materials including a smooth rubberized texture + 0.6g gold plating.  
-        Price: <strong>$299.99</strong>
-    </p>
+    <p>Rare materials + 0.6g gold plating. Price: <strong>$299.99</strong></p>
 </div>
+
+<!-- ORDER SECTION -->
+<div id="order-section">
+    <div class="order-title">Order Your S.H.U.T U.P Device</div>
+
+    <div class="mini-slider">
+        <img src="image1.jpg" class="active">
+        <img src="image2.jpg">
+    </div>
+
+    <label>Quantity:</label><br>
+    <select id="qty">
+        <option value="1">1 Device</option>
+        <option value="2">2 Devices</option>
+        <option value="3">3 Devices</option>
+    </select>
+
+    <div class="price" id="price">\$299.99</div>
+
+    <a class="confirm-btn">Confirm Purchase</a>
+</div>
+
+<script>
+    /* OPEN ORDER SECTION */
+    function openOrder() {
+        document.getElementById("order-section").classList.add("show");
+        window.location.hash = "#order-section";
+    }
+
+    /* ORDER PRICE CALC */
+    document.getElementById("qty").addEventListener("change", function() {
+        const base = 299.99;
+        document.getElementById("price").textContent = "$" + (base * this.value).toFixed(2);
+    });
+
+    /* MINI SLIDER */
+    let ms = document.querySelectorAll('.mini-slider img');
+    let mi = 0;
+    setInterval(() => {
+        ms[mi].classList.remove('active');
+        mi = (mi + 1) % ms.length;
+        ms[mi].classList.add('active');
+    }, 3000);
+</script>
 
 </body>
 </html>
